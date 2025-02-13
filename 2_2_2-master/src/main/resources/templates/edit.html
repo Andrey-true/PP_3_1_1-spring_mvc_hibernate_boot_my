@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+          crossorigin="anonymous">
+    <style>
+        .table-dark th {
+            background-color: #343a40;
+        }
+
+        body {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        form input {
+            background-color: #5a5e61;
+            color: #fff;
+        }
+
+        form button {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        form button:hover {
+            background-color: #343a40;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <form method="POST" th:action="@{/usersTable/update}" th:object="${user}" class="user-form">
+        <input type="hidden" name="id" th:value="${user.id}" />
+        <div class="row mb-3">
+            <label for="inputName" class="col-sm-2 col-form-label">Name:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputName" name="name" th:value="${user.name}" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputAge" class="col-sm-2 col-form-label">Age:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputAge" name="age" th:value="${user.age}" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputCity" class="col-sm-2 col-form-label">City:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputCity" name="city" th:value="${user.city}" />
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+</body>
+</html>
