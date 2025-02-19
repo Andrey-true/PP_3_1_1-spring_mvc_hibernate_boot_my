@@ -1,6 +1,8 @@
 package web.controller;
 
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -11,8 +13,10 @@ import web.service.UserService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/usersTable") // Вынесли повторяющийся путь
+@RequestMapping("/usersTable") // Вынесли общий путь
 public class UserController {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class); // Логгер
 
     private final UserService userService;
 
@@ -55,8 +59,8 @@ public class UserController {
 
     @PostMapping("/remove")
     public String removeUser(@RequestParam("id") Long id) {
+        logger.info("Removing user with ID: {}", id); // Вместо System.out.println
         userService.removeUser(id);
-        System.out.println(id);
         return "redirect:/usersTable";
     }
 }
